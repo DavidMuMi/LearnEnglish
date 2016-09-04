@@ -98,31 +98,31 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="irregularVerbs.cs" />
-    <Compile Include="irregular_intro.xaml.cs">
+    <Compile Include="IrregularVerbs\irregularVerbs.cs" />
+    <Compile Include="IrregularVerbs\irregular_intro.xaml.cs">
       <DependentUpon>irregular_intro.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="phrasals_intro.xaml.cs">
+    <Compile Include="PhrasalVerbs\phrasals_intro.xaml.cs">
       <DependentUpon>phrasals_intro.xaml</DependentUpon>
     </Compile>
-    <Compile Include="phrasalVerbs.cs" />
+    <Compile Include="PhrasalVerbs\phrasalVerbs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="studyPhrasals.xaml.cs">
+    <Compile Include="PhrasalVerbs\studyPhrasals.xaml.cs">
       <DependentUpon>studyPhrasals.xaml</DependentUpon>
     </Compile>
-    <Compile Include="studyVerbs.xaml.cs">
+    <Compile Include="IrregularVerbs\studyVerbs.xaml.cs">
       <DependentUpon>studyVerbs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vocabulary\studyVocabulary.xaml.cs">
       <DependentUpon>studyVocabulary.xaml</DependentUpon>
     </Compile>
-    <Compile Include="testPhrasals.xaml.cs">
+    <Compile Include="PhrasalVerbs\testPhrasals.xaml.cs">
       <DependentUpon>testPhrasals.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vocabulary\testVerbs.xaml.cs">
+    <Compile Include="IrregularVerbs\testVerbs.xaml.cs">
       <DependentUpon>testVerbs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vocabulary\testVocabulary.xaml.cs">
@@ -159,7 +159,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="irregular_intro.xaml">
+    <Page Include="IrregularVerbs\irregular_intro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,15 +167,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="phrasals_intro.xaml">
+    <Page Include="PhrasalVerbs\phrasals_intro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="studyPhrasals.xaml">
+    <Page Include="PhrasalVerbs\studyPhrasals.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="studyVerbs.xaml">
+    <Page Include="IrregularVerbs\studyVerbs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,11 +183,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="testPhrasals.xaml">
+    <Page Include="PhrasalVerbs\testPhrasals.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vocabulary\testVerbs.xaml">
+    <Page Include="IrregularVerbs\testVerbs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
