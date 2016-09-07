@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using System.IO;
 using Windows.Storage;
 
-namespace Inglés
+namespace English
 {
     class Vocabulay
     {

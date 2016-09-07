@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inglés
+namespace English
 {
     class VocabularyWord : IEquatable<VocabularyWord>
     {
