@@ -18,7 +18,12 @@ namespace English
             createfile();
             LoadJson();
             if (wordList == null)
+            {
                 wordList = new List<VocabularyWord>();
+                VocabularyWord first = new VocabularyWord("Loathe", "If you **** someone or something, you hate them very much", "From an early age the brothers have loathed each other");
+                wordList.Add(first);
+            }
+              
 
             var sortedWords =
                 from w in wordList
@@ -78,7 +83,7 @@ namespace English
                 Windows.Storage.StorageFile sampleFile = await storageFolder.CreateFileAsync("vocabulary.json", Windows.Storage.CreationCollisionOption.OpenIfExists);
 
                 List<VocabularyWord> myListShort = new List<VocabularyWord>();
-                VocabularyWord first = new VocabularyWord("Loathe", "If you **** someone or something, you hate them very much");
+                VocabularyWord first = new VocabularyWord("Loathe", "If you **** someone or something, you hate them very much", "From an early age the brothers have loathed each other");
                 myListShort.Add(first);
                 string data = JsonConvert.SerializeObject(myListShort);
                 await Windows.Storage.FileIO.WriteTextAsync(sampleFile, data);
@@ -92,6 +97,7 @@ namespace English
             var randomAccessStream = await sampleFile.OpenReadAsync();
             Stream stream = randomAccessStream.AsStreamForRead();
             string JsonString=File.ReadAllText(sampleFile.Path);
+            this.wordList = new List<VocabularyWord>();
             this.wordList = JsonConvert.DeserializeObject<List<VocabularyWord>>(JsonString);
         }
 

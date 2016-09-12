@@ -8,15 +8,19 @@ namespace English
 {
     class VocabularyWord : IEquatable<VocabularyWord>
     {
-        public String word;
-        public String meaning;
-        public int tries=0;
-        public int success=0;
-        public int successPercent = 0;
-        public VocabularyWord(String word, String meaning)
+        public string word { get; set; }
+        public string meaning { get; set; }
+        public string example { get; set; }
+        public double tries=0;
+        public double success=0;
+        public double successPercent = 0;
+
+
+        public VocabularyWord(String word, String meaning, String example)
         {
             this.word = word;
             this.meaning = meaning;
+            this.example = example;
         }
         public bool Equals(VocabularyWord other)
         {
