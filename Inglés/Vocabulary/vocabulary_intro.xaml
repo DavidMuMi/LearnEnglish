@@ -7,14 +7,31 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="Study" Content="Study Vocabulary" HorizontalAlignment="Left" Margin="152,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.107,-0.671" Click="Study_Click"/>
-        <Button x:Name="Test" Content="Test Vocabulary" HorizontalAlignment="Left" Margin="152,292,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.107,-0.671" Click="Test_Click" />
-        <Button x:Name="Back" Content="Back" HorizontalAlignment="Left" Margin="155,438,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.107,-0.671" UseLayoutRounding="False" d:LayoutRounding="Auto" >
-            <Button.RenderTransform>
-                <CompositeTransform SkewX="3.366" TranslateX="-3.145"/>
-            </Button.RenderTransform>
-        </Button>
-        <Button x:Name="Add" Content="Add Vocabulary" HorizontalAlignment="Left" Margin="152,369,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.107,-0.671" Click="Add_Click" />
+    <Grid BorderBrush="#FF57669D">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#3498DB" Offset="0"/>
+                <GradientStop Color="#2980B9" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button x:Name="Study" Content="Study Vocabulary" HorizontalAlignment="Stretch"  VerticalAlignment="Center" RenderTransformOrigin="0.107,-0.671" Click="Study_Click" Background="#E74C3C" Height="178" Width="743" PointerEntered="Study_PointerEntered" Grid.Row="2" Foreground="#FFF6F0F0" FontFamily="Elephant" FontSize="24" PointerExited="Study_PointerExited"  Grid.RowSpan="1"/>
+        <Button x:Name="Test" Content="Test Vocabulary" HorizontalAlignment="Stretch"  VerticalAlignment="Center" RenderTransformOrigin="0.107,-0.671" Click="Test_Click" Height="152" Background="#E74C3C"  Grid.Row="2" Margin="589,32,588,32" Foreground="#FFF9F1F1" FontFamily="Elephant" FontSize="24" PointerEntered="Test_PointerEntered" PointerExited="Test_PointerExited"/>
+
+        <Button x:Name="Back" Content="Back" HorizontalAlignment="Stretch"  VerticalAlignment="Center" RenderTransformOrigin="0.107,-0.671" Height="68" Click="Back_Click" Background="#FFF92812" Grid.Row="4" Width="300" Foreground="#FFFBFBFB" FontWeight="Medium" FontFamily="Elephant" FontSize="24" PointerEntered="Back_PointerEntered" PointerExited="Back_PointerExited"/>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button x:Name="Add" Content="Add Vocabulary" HorizontalAlignment="Stretch"  VerticalAlignment="Center" RenderTransformOrigin="0.107,-0.671" Click="Add_Click" Height="175" Width="743" Background="#E74C3C" Foreground="#FFFAF4F4" FontFamily="Elephant" FontSize="24" PointerEntered="Add_PointerEntered" PointerExited="Add_PointerExited"  Grid.Row="1" />
+        </Grid>
     </Grid>
 </Page>

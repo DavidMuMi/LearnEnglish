@@ -7,7 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid BorderBrush="#FF57669D">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FF88B9FB" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <TextBlock x:Name="meaningText" HorizontalAlignment="Left" Margin="85,102,0,0" TextWrapping="Wrap" Text="Meaning" VerticalAlignment="Top" Height="35" Width="121"/>
         <TextBox x:Name="meaningBox" HorizontalAlignment="Left" Margin="85,137,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="196"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="85,218,0,0" TextWrapping="Wrap" Text="Word" VerticalAlignment="Top"/>

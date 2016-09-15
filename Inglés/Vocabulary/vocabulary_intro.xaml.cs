@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -43,6 +44,51 @@ namespace English
         {
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(addVoc), null);
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(MainPage), null);
+        }
+
+        private void Study_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            Study.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+        }
+
+        private void Study_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            Study.Background = new SolidColorBrush(Color.FromArgb(255, 231, 76, 60));
+        }
+
+        private void Add_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            Add.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+        }
+
+        private void Add_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            Add.Background = new SolidColorBrush(Color.FromArgb(255, 231, 76, 60));
+        }
+
+        private void Test_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            Test.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+        }
+
+        private void Test_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            Test.Background = new SolidColorBrush(Color.FromArgb(255, 231, 76, 60));
+        }
+        private void Back_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            Back.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+        }
+
+        private void Back_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            Back.Background = new SolidColorBrush(Color.FromArgb(255, 249 , 40, 18));
         }
     }
 }
