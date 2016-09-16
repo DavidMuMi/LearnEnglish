@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,5 +27,23 @@ namespace English
         {
             this.InitializeComponent();
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(vocabulary_intro), null);
+        }
+
+        private void Back_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            Back.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+        }
+
+        private void Back_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            Back.Background = new SolidColorBrush(Color.FromArgb(255, 249, 40, 18));
+        }
+
+        
     }
 }
