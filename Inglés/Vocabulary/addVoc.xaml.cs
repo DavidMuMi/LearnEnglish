@@ -36,14 +36,21 @@ namespace English
 
         private void Back_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
-            Back.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
         }
 
         private void Back_PointerExited(object sender, PointerRoutedEventArgs e)
         {
-            Back.Background = new SolidColorBrush(Color.FromArgb(255, 249, 40, 18));
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 249, 40, 18));
         }
 
-        
+        private void Example_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (((TextBox)sender).Text == "Example to add" || ((TextBox)sender).Text == "Word to add" || ((TextBox)sender).Text == "Definition to add")
+            {
+                ((TextBox)sender).Text = "";
+            }
+            
+        }
     }
 }

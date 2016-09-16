@@ -53,33 +53,15 @@ namespace English
 
         private void vocabulary_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
-            vocabulary.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
         }
 
         private void vocabulary_PointerExited(object sender, PointerRoutedEventArgs e)
         {
-            vocabulary.Background = new SolidColorBrush(Color.FromArgb(255, 231, 76, 60));
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 231, 76, 60));
         }
 
-        private void irregularVerbs_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            irregularVerbs.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
-        }
-
-        private void irregularVerbs_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            irregularVerbs.Background = new SolidColorBrush(Color.FromArgb(255, 231, 76, 60));
-        }
-
-        private void phrasalVerbs_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            phrasalVerbs.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
-        }
-
-        private void phrasalVerbs_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            phrasalVerbs.Background = new SolidColorBrush(Color.FromArgb(255, 231, 76, 60));
-        }
+        
         private void Exit_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
             Exit.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));

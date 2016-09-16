@@ -32,7 +32,7 @@
                 <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <TextBox x:Name="Word" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" TextWrapping="Wrap" Text="Word" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="#FFE74C3C" />
+            <TextBox x:Name="Word" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" TextWrapping="Wrap" Text="Word to add" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="{ThemeResource AppBarToggleButtonCheckedBorderThemeBrush}" GotFocus="Example_GotFocus"/>
            
         </Grid>
         <Grid Grid.Row="1">
@@ -46,7 +46,7 @@
                 <RowDefinition Height="6*"></RowDefinition>
                 <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
-
+            <TextBox x:Name="Definition" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" TextWrapping="Wrap" Text="Definition to add" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="{ThemeResource AppBarToggleButtonCheckedBorderThemeBrush}" GotFocus="Example_GotFocus"/>   
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -59,7 +59,7 @@
                 <RowDefinition Height="6*"></RowDefinition>
                 <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
-
+            <TextBox x:Name="Example" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" TextWrapping="Wrap" Text="Example to add" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="{ThemeResource AppBarToggleButtonCheckedBorderThemeBrush}" GotFocus="Example_GotFocus"/>
 
         </Grid>
         <Grid Grid.Row="4">

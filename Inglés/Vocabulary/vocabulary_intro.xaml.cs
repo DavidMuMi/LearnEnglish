@@ -54,41 +54,14 @@ namespace English
 
         private void Study_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
-            Study.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
         }
 
         private void Study_PointerExited(object sender, PointerRoutedEventArgs e)
         {
-            Study.Background = new SolidColorBrush(Color.FromArgb(255, 231, 76, 60));
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 231, 76, 60));
         }
 
-        private void Add_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            Add.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
-        }
 
-        private void Add_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            Add.Background = new SolidColorBrush(Color.FromArgb(255, 231, 76, 60));
-        }
-
-        private void Test_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            Test.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
-        }
-
-        private void Test_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            Test.Background = new SolidColorBrush(Color.FromArgb(255, 231, 76, 60));
-        }
-        private void Back_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            Back.Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
-        }
-
-        private void Back_PointerExited(object sender, PointerRoutedEventArgs e)
-        {
-            Back.Background = new SolidColorBrush(Color.FromArgb(255, 249 , 40, 18));
-        }
     }
 }
