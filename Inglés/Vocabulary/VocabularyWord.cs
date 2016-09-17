@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inglés;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace English
 {
-    class VocabularyWord : IEquatable<VocabularyWord>
+    class VocabularyWord : IEquatable<VocabularyWord>,Word
     {
         public string word { get; set; }
         public string meaning { get; set; }

@@ -75,7 +75,7 @@
                 <RowDefinition Height="3*"></RowDefinition>
             </Grid.RowDefinitions>
             <Button x:Name="Back" Content="Save and back" HorizontalAlignment="Stretch"  VerticalAlignment="Top" RenderTransformOrigin="0.107,-0.671" Height="120" Click="Back_Click" Background="#FFF92812"  Foreground="#FFFBFBFB" FontWeight="Medium" FontFamily="Elephant" FontSize="24" PointerEntered="Back_PointerEntered" PointerExited="Back_PointerExited" Grid.Column="1" Margin="0,48,0,0" Grid.RowSpan="3"/>
-            <Button x:Name="Next" Content="Add another" HorizontalAlignment="Stretch"  VerticalAlignment="Top" RenderTransformOrigin="0.107,-0.671" Height="120" Click="Back_Click" Background="#FFF92812"  Foreground="#FFFBFBFB" FontWeight="Medium" FontFamily="Elephant" FontSize="24" PointerEntered="Back_PointerEntered" PointerExited="Back_PointerExited" Grid.Column="3" Margin="0,48,0,0" Grid.RowSpan="3"/>
+            <Button x:Name="Next" Content="Add another" HorizontalAlignment="Stretch"  VerticalAlignment="Top" RenderTransformOrigin="0.107,-0.671" Height="120" Click="Next_Click" Background="#FFF92812"  Foreground="#FFFBFBFB" FontWeight="Medium" FontFamily="Elephant" FontSize="24" PointerEntered="Back_PointerEntered" PointerExited="Back_PointerExited" Grid.Column="3" Margin="0,48,0,0" Grid.RowSpan="3"/>
         </Grid>
     </Grid>
 </Page>

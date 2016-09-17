@@ -92,6 +92,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMyGeneric.cs" />
+    <Compile Include="MyUtils.cs" />
+    <Compile Include="Word.cs" />
     <Compile Include="Vocabulary\addVoc.xaml.cs">
       <DependentUpon>addVoc.xaml</DependentUpon>
     </Compile>
@@ -132,7 +135,7 @@
     <Compile Include="Vocabulary\vocabulary_intro.xaml.cs">
       <DependentUpon>vocabulary_intro.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vocabulary\Vocabulay.cs" />
+    <Compile Include="Vocabulary\Vocabulary.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

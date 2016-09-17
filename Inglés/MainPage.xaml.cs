@@ -26,6 +26,7 @@ namespace English
         public MainPage()
         {
             this.InitializeComponent();
+            
         }
 
         private void vocabulary_Click(object sender, RoutedEventArgs e)
