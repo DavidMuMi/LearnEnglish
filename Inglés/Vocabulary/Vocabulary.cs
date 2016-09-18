@@ -13,12 +13,12 @@ namespace English
     class Vocabulay:IMyGeneric
     {
         private List<VocabularyWord> Words;
-        public List<VocabularyWord> wordList;
+        public new List<VocabularyWord> wordList;
         public Vocabulay()
         {
-            MyUtils.createfile("voc.json");
-            MyUtils.LoadJson("voc.json", this, new VocabularyWord("", "", ""));
-            if (wordList.Count!=0)
+            CreateJsonVoc("voc.json");
+            LoadJson("voc.json");
+            if (wordList!=null)
             {
                var sortedWords =
                from w in wordList
@@ -68,6 +68,37 @@ namespace English
         public int getTotalVocabulary()
         {
             return Words.Count();
+        }
+
+        async public void CreateJsonVoc(string name)
+        {
+
+            try
+            {
+                var file = await ApplicationData.Current.LocalFolder.GetFileAsync(name);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                Windows.Storage.StorageFile sampleFile = await storageFolder.CreateFileAsync(name, Windows.Storage.CreationCollisionOption.OpenIfExists);
+                /*
+                List<VocabularyWord> myListShort = new List<VocabularyWord>();
+                VocabularyWord first = new VocabularyWord("Loathe", "If you **** someone or something, you hate them very much", "From an early age the brothers have loathed each other");
+                myListShort.Add(first);
+                string data = JsonConvert.SerializeObject(myListShort);
+                await Windows.Storage.FileIO.WriteTextAsync(sampleFile, data);
+                */
+            }
+        }
+
+        async public void LoadJson(string name)
+        {
+            Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Windows.Storage.StorageFile sampleFile = await storageFolder.GetFileAsync(name);
+            var randomAccessStream = await sampleFile.OpenReadAsync();
+            Stream stream = randomAccessStream.AsStreamForRead();
+            string JsonString = File.ReadAllText(sampleFile.Path);
+            this.wordList = JsonConvert.DeserializeObject<List<VocabularyWord>>(JsonString);
         }
 
     }
