@@ -32,7 +32,7 @@ namespace English
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-
+            voc.SaveJson("voc.json");
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(vocabulary_intro), null);
         }

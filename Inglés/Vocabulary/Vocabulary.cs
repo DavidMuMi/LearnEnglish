@@ -10,27 +10,28 @@ using Inglés;
 
 namespace English
 {
-    class Vocabulay:IMyGeneric
+    class Vocabulay : IMyGeneric
     {
         private List<VocabularyWord> Words;
         public new List<VocabularyWord> wordList;
         public Vocabulay()
         {
+            Words = new List<VocabularyWord>();
             CreateJsonVoc("voc.json");
             LoadJson("voc.json");
-            if (wordList!=null)
+            if (wordList != null && wordList.Count() != 0)
             {
-               var sortedWords =
-               from w in wordList
-               orderby w.successPercent
-               select w;
+                var sortedWords =
+                from w in wordList
+                orderby w.successPercent
+                select w;
 
                 Words = new List<VocabularyWord>();
                 Words = sortedWords.ToList<VocabularyWord>();
             }
-              
 
-               
+
+
         }
 
         public List<String> getAllMeanings()
@@ -99,7 +100,18 @@ namespace English
             Stream stream = randomAccessStream.AsStreamForRead();
             string JsonString = File.ReadAllText(sampleFile.Path);
             this.wordList = JsonConvert.DeserializeObject<List<VocabularyWord>>(JsonString);
+            if (this.wordList == null)
+            {
+                this.wordList = new List<VocabularyWord>();
+            }
         }
 
+        async public void SaveJson(string name)
+        {
+            Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Windows.Storage.StorageFile sampleFile = await storageFolder.CreateFileAsync(name, Windows.Storage.CreationCollisionOption.OpenIfExists);
+            string data = JsonConvert.SerializeObject(this.wordList);
+            await Windows.Storage.FileIO.WriteTextAsync(sampleFile, data);
+        }
     }
 }
