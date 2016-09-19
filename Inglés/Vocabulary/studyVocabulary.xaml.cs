@@ -22,26 +22,26 @@ namespace English
     /// </summary>
     public sealed partial class studyVocabulary : Page
     {
-        Vocabulay voc;
+        
         int pos;
         int totalVoc;
         public studyVocabulary()
         {
             this.InitializeComponent();
-            voc = new Vocabulay();
-            totalVoc = voc.getTotalVocabulary();
+            totalVoc = Vocabulay.getTotalVocabulary();
             pos = 0;
-            WordBox.Text = voc.GetResponse(0);
-            MeaningBox.Text = voc.getOneMeaning(0);           
+            WordBox.Text = Vocabulay.GetResponse(0);
+            MeaningBox.Text = Vocabulay.getOneMeaning(0);           
         }
+     
 
         private void next_Click(object sender, RoutedEventArgs e)
         {
             pos++;
             if (pos >= totalVoc)
                 pos = 0;
-            WordBox.Text = voc.GetResponse(pos);
-            MeaningBox.Text = voc.getOneMeaning(pos);
+            WordBox.Text = Vocabulay.GetResponse(pos);
+            MeaningBox.Text = Vocabulay.getOneMeaning(pos);
         }
     }
 }

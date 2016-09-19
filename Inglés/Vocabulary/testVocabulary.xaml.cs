@@ -24,41 +24,40 @@ namespace English
     /// </summary>
     public sealed partial class testVocabulary : Page
     {
-        Vocabulay voc;
+        
         int total;
         int act = 0;
         int[] nums;
         public testVocabulary()
         {            
             this.InitializeComponent();
-            voc = new Vocabulay();
-            nums = new int[voc.getTotalVocabulary()];
-            total = voc.getTotalVocabulary();
-            meaningBox.Text = voc.getOneMeaning(nums[act]);
+            nums = new int[Vocabulay.getTotalVocabulary()];
+            total = Vocabulay.getTotalVocabulary();
+            meaningBox.Text = Vocabulay.getOneMeaning(nums[act]);
             numRemaining.Text = total.ToString();
         }
 
         private void check_Click(object sender, RoutedEventArgs e)
         {
 
-            if (voc.compareResult(nums[act], wordBox.Text.ToString()))
+            if (Vocabulay.compareResult(nums[act], wordBox.Text.ToString()))
             {
                 wordBox.Background = new SolidColorBrush(Colors.Green);
-                voc.wordList[act].updateSuccess(true);
+                Vocabulay.WordList[act].updateSuccess(true);
             }
             else
             {
                 wordBox.Background = new SolidColorBrush(Colors.Red);
-                voc.wordList[act].updateSuccess(false);
+                Vocabulay.WordList[act].updateSuccess(false);
             }
         }
 
         private void next_Click(object sender, RoutedEventArgs e)
         {
             act++;
-            if (act >= voc.getTotalVocabulary())
+            if (act >= Vocabulay.getTotalVocabulary())
                 act = 0;
-            meaningBox.Text = voc.getOneMeaning(nums[act]);
+            meaningBox.Text = Vocabulay.getOneMeaning(nums[act]);
             numRemaining.Text = (--total).ToString();
             wordBox.Background = new SolidColorBrush(Colors.White);
             wordBox.Text = "";
@@ -66,7 +65,7 @@ namespace English
 
         private void getAnswer_Click(object sender, RoutedEventArgs e)
         {
-            wordBox.Text = voc.GetResponse(nums[act]);
+            wordBox.Text = Vocabulay.GetResponse(nums[act]);
         }
 
         private void save_Click(object sender, RoutedEventArgs e)
@@ -80,7 +79,7 @@ namespace English
         {
             Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
             Windows.Storage.StorageFile sampleFile = await storageFolder.CreateFileAsync("vocabulary.json", Windows.Storage.CreationCollisionOption.OpenIfExists);
-            string data = JsonConvert.SerializeObject(voc.wordList);
+            string data = JsonConvert.SerializeObject(Vocabulay.WordList);
             await Windows.Storage.FileIO.WriteTextAsync(sampleFile, data);
         }
     }

@@ -16,7 +16,6 @@ namespace English
         public double success=0;
         public double successPercent = 0;
 
-
         public VocabularyWord(String word, String meaning, String example)
         {
             this.word = word;
@@ -25,9 +24,11 @@ namespace English
         }
         public bool Equals(VocabularyWord other)
         {
-            if (other == null)
-                return false;
-            return (this.word.Equals(other.word));
+            if (other.word==this.word)
+            {
+                return true;
+            }
+            return false;
         }
         public void updateSuccess(bool success )
         {

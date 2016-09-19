@@ -10,68 +10,84 @@ using Inglés;
 
 namespace English
 {
-    class Vocabulay : IMyGeneric
+    public static class Vocabulay
     {
-        private List<VocabularyWord> Words;
-        public new List<VocabularyWord> wordList;
-        public Vocabulay()
+        private static List<VocabularyWord> Words;
+        private static List<VocabularyWord> wordList = new List<VocabularyWord>();
+
+        internal static List<VocabularyWord> WordList
+        {
+            get
+            {
+                return wordList;
+            }
+
+            set
+            {
+                wordList = value;
+            }
+        }
+
+        static Vocabulay()
         {
             Words = new List<VocabularyWord>();
             CreateJsonVoc("voc.json");
             LoadJson("voc.json");
-            if (wordList != null && wordList.Count() != 0)
+            updateWords();
+        }
+
+        public static void updateWords()
+        {
+            if (WordList != null && WordList.Count() != 0)
             {
                 var sortedWords =
-                from w in wordList
+                from w in WordList
                 orderby w.successPercent
                 select w;
 
                 Words = new List<VocabularyWord>();
                 Words = sortedWords.ToList<VocabularyWord>();
             }
-
-
-
         }
 
-        public List<String> getAllMeanings()
+        static List<String> getAllMeanings()
         {
             List<String> allMeanings = new List<string>();
-            foreach (VocabularyWord i in this.Words)
+            foreach (VocabularyWord i in Vocabulay.Words)
                 allMeanings.Add(i.meaning);
             return allMeanings;
         }
 
-        public List<String> getAllWords()
+        static List<String> getAllWords()
         {
             List<String> allMeanings = new List<string>();
-            foreach (VocabularyWord i in this.Words)
+            foreach (VocabularyWord i in Vocabulay.Words)
                 allMeanings.Add(i.word);
             return allMeanings;
         }
 
-        public String getOneMeaning(int num)
+        public static String getOneMeaning(int num)
         {
-            return this.Words[num].meaning;
+            return Vocabulay.Words[num].meaning;
         }
 
-        public String GetResponse(int num)
+        public static String GetResponse(int num)
         {
-            return this.Words[num].word;
+            return Vocabulay.Words[num].word;
         }
 
-        public bool compareResult(int num, String given)
+        public static bool compareResult(int num, String given)
         {
             bool ret = (Words[num].word.ToLower().Equals(given.ToLower())) ? true : false;
             return ret;
         }
 
-        public int getTotalVocabulary()
+        public static int getTotalVocabulary()
         {
             return Words.Count();
         }
 
-        async public void CreateJsonVoc(string name)
+        async public static void CreateJsonVoc(string name)
         {
 
             try
@@ -92,25 +108,25 @@ namespace English
             }
         }
 
-        async public void LoadJson(string name)
+        async public static void LoadJson(string name)
         {
             Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
             Windows.Storage.StorageFile sampleFile = await storageFolder.GetFileAsync(name);
             var randomAccessStream = await sampleFile.OpenReadAsync();
             Stream stream = randomAccessStream.AsStreamForRead();
             string JsonString = File.ReadAllText(sampleFile.Path);
-            this.wordList = JsonConvert.DeserializeObject<List<VocabularyWord>>(JsonString);
-            if (this.wordList == null)
+            Vocabulay.WordList = JsonConvert.DeserializeObject<List<VocabularyWord>>(JsonString);
+            if (Vocabulay.WordList == null)
             {
-                this.wordList = new List<VocabularyWord>();
+                Vocabulay.WordList = new List<VocabularyWord>();
             }
         }
 
-        async public void SaveJson(string name)
+        async public static void SaveJson(string name)
         {
             Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
             Windows.Storage.StorageFile sampleFile = await storageFolder.CreateFileAsync(name, Windows.Storage.CreationCollisionOption.OpenIfExists);
-            string data = JsonConvert.SerializeObject(this.wordList);
+            string data = JsonConvert.SerializeObject(Vocabulay.WordList);
             await Windows.Storage.FileIO.WriteTextAsync(sampleFile, data);
         }
     }

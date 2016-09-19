@@ -23,16 +23,19 @@ namespace English
     /// </summary>
     public sealed partial class addVoc : Page
     {
-        Vocabulay voc;
+
         public addVoc()
         {
             this.InitializeComponent();
-            voc = new Vocabulay();
         }
+
+      
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            voc.SaveJson("voc.json");
+            VocabularyWord word = new VocabularyWord(Word.Text, Definition.Text, Example.Text);
+            Vocabulay.WordList.Add(word);
+            Vocabulay.SaveJson("voc.json");
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(vocabulary_intro), null);
         }
@@ -59,7 +62,7 @@ namespace English
         private void Next_Click(object sender, RoutedEventArgs e)
         {
             VocabularyWord word = new VocabularyWord(Word.Text, Definition.Text, Example.Text);
-            voc.wordList.Add(word);
+            Vocabulay.WordList.Add(word);
         }
     }
 }

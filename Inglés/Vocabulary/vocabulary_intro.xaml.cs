@@ -1,4 +1,5 @@
-﻿using System;
+﻿using English;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,8 +27,9 @@ namespace English
         public vocabulary_intro()
         {
             this.InitializeComponent();
-
+            Vocabulay.updateWords();
         }
+       
 
         private void Study_Click(object sender, RoutedEventArgs e)
         {
