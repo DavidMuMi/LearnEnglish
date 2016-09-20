@@ -50,6 +50,11 @@ namespace English
             }
         }
 
+        internal static VocabularyWord getWord(int v)
+        {
+            return Words[v];
+        }
+
         static List<String> getAllMeanings()
         {
             List<String> allMeanings = new List<string>();

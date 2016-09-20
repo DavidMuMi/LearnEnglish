@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,13 +26,14 @@ namespace English
         
         int pos;
         int totalVoc;
+        VocabularyWord word;
         public studyVocabulary()
         {
             this.InitializeComponent();
             totalVoc = Vocabulay.getTotalVocabulary();
             pos = 0;
-            WordBox.Text = Vocabulay.GetResponse(0);
-            MeaningBox.Text = Vocabulay.getOneMeaning(0);           
+            word = Vocabulay.getWord(0);
+            actBoxes();   
         }
      
 
@@ -40,8 +42,32 @@ namespace English
             pos++;
             if (pos >= totalVoc)
                 pos = 0;
-            WordBox.Text = Vocabulay.GetResponse(pos);
-            MeaningBox.Text = Vocabulay.getOneMeaning(pos);
+            word = Vocabulay.getWord(pos);
+            actBoxes();
+        }
+
+        private void actBoxes()
+        {
+            Word.Text = word.word;
+            Meaning.Text = word.meaning;
+            Example.Text = word.example;
+        }
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+           
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(vocabulary_intro), null);
+        }
+
+
+        private void Back_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+        }
+
+        private void Back_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 249, 40, 18));
         }
     }
 }
