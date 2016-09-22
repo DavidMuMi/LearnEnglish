@@ -42,7 +42,7 @@ namespace English
             {
                 var sortedWords =
                 from w in WordList
-                orderby w.successPercent
+                orderby w.successPercent ascending
                 select w;
 
                 Words = new List<VocabularyWord>();
@@ -74,6 +74,11 @@ namespace English
         public static String getOneMeaning(int num)
         {
             return Vocabulay.Words[num].meaning;
+        }
+
+        public static String getOneExample(int num)
+        {
+            return Vocabulay.Words[num].example;
         }
 
         public static String GetResponse(int num)

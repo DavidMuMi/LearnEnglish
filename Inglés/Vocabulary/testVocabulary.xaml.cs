@@ -27,29 +27,31 @@ namespace English
         
         int total;
         int act = 0;
-        int[] nums;
+        VocabularyWord word;
         public testVocabulary()
         {            
             this.InitializeComponent();
-            nums = new int[Vocabulay.getTotalVocabulary()];
             total = Vocabulay.getTotalVocabulary();
-            meaningBox.Text = Vocabulay.getOneMeaning(nums[act]);
+            word = Vocabulay.getWord(act);
+            meaningBox.Text = word.meaning;
             numRemaining.Text = total.ToString();
         }
 
         private void check_Click(object sender, RoutedEventArgs e)
         {
 
-            if (Vocabulay.compareResult(nums[act], wordBox.Text.ToString()))
+            if (word.word==wordBox.Text.ToString())
             {
                 wordBox.Background = new SolidColorBrush(Colors.Green);
                 Vocabulay.WordList[act].updateSuccess(true);
+                Example.Text = Vocabulay.getOneExample(act);
             }
             else
             {
                 wordBox.Background = new SolidColorBrush(Colors.Red);
                 Vocabulay.WordList[act].updateSuccess(false);
             }
+            Next.IsEnabled = true;
         }
 
         private void next_Click(object sender, RoutedEventArgs e)
@@ -57,15 +59,23 @@ namespace English
             act++;
             if (act >= Vocabulay.getTotalVocabulary())
                 act = 0;
-            meaningBox.Text = Vocabulay.getOneMeaning(nums[act]);
+            word = Vocabulay.getWord(act);
+            Check.IsEnabled = true;
+            meaningBox.Text = word.meaning;
+            Example.Text = "";
             numRemaining.Text = (--total).ToString();
             wordBox.Background = new SolidColorBrush(Colors.White);
             wordBox.Text = "";
+            Next.IsEnabled = false;
         }
 
         private void getAnswer_Click(object sender, RoutedEventArgs e)
         {
-            wordBox.Text = Vocabulay.GetResponse(nums[act]);
+            wordBox.Text = word.word;
+            Example.Text = word.example;
+            Vocabulay.WordList[act].updateSuccess(false);
+            Check.IsEnabled = false;
+            Next.IsEnabled = true;
         }
 
         private void save_Click(object sender, RoutedEventArgs e)
@@ -81,6 +91,23 @@ namespace English
             Windows.Storage.StorageFile sampleFile = await storageFolder.CreateFileAsync("vocabulary.json", Windows.Storage.CreationCollisionOption.OpenIfExists);
             string data = JsonConvert.SerializeObject(Vocabulay.WordList);
             await Windows.Storage.FileIO.WriteTextAsync(sampleFile, data);
+        }
+
+        private void Back_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+        }
+
+        private void Back_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 249, 40, 18));
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Vocabulay.SaveJson("voc.json");
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(vocabulary_intro), null);
         }
     }
 
