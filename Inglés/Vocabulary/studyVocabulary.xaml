@@ -32,7 +32,7 @@
                 <RowDefinition Height="6*"></RowDefinition>
                 <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBox x:Name="Word" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="{ThemeResource AppBarToggleButtonCheckedBorderThemeBrush}" />
+            <TextBox x:Name="Word" Grid.Column="1" HorizontalAlignment="Stretch" IsReadOnly="True" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="{ThemeResource AppBarToggleButtonCheckedBorderThemeBrush}" />
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -45,7 +45,7 @@
                 <RowDefinition Height="6*"></RowDefinition>
                 <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBox x:Name="Meaning" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="{ThemeResource AppBarToggleButtonCheckedBorderThemeBrush}"/>
+            <TextBox x:Name="Meaning" Grid.Column="1" HorizontalAlignment="Stretch" IsReadOnly="True" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="{ThemeResource AppBarToggleButtonCheckedBorderThemeBrush}"/>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -58,7 +58,7 @@
                 <RowDefinition Height="6*"></RowDefinition>
                 <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBox x:Name="Example" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="{ThemeResource AppBarToggleButtonCheckedBorderThemeBrush}"/>
+            <TextBox x:Name="Example" Grid.Column="1" HorizontalAlignment="Stretch" IsReadOnly="True" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="{ThemeResource AppBarToggleButtonCheckedBorderThemeBrush}"/>
 
         </Grid>
         <Grid Grid.Row="4">
