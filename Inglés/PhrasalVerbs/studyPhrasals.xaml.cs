@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Inglés.PhrasalVerbs;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,17 +24,16 @@ namespace English
     /// </summary>
     public sealed partial class studyPhrasals : Page
     {
-        phrasalVerbs voc;
         int pos;
         int totalVoc;
+        PhrasalWord word;
         public studyPhrasals()
         {
             this.InitializeComponent();
-            voc = new phrasalVerbs();
-            totalVoc = voc.getTotalPhrasalVerbs();
+            totalVoc = phrasalVerbs.getTotalVocabulary();
             pos = 0;
-            WordBox.Text = voc.GetResponse(0);
-            MeaningBox.Text = voc.getOneMeaning(0);
+            word = phrasalVerbs.getWord(0);
+            actBoxes();
         }
 
         private void next_Click(object sender, RoutedEventArgs e)
@@ -40,8 +41,32 @@ namespace English
             pos++;
             if (pos >= totalVoc)
                 pos = 0;
-            WordBox.Text = voc.GetResponse(pos);
-            MeaningBox.Text = voc.getOneMeaning(pos);
+            word = phrasalVerbs.getWord(pos);
+            actBoxes();
+        }
+
+        private void actBoxes()
+        {
+            Word.Text = word.word;
+            Meaning.Text = word.meaning;
+            Example.Text = word.example;
+        }
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(vocabulary_intro), null);
+        }
+
+
+        private void Back_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+        }
+
+        private void Back_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 249, 40, 18));
         }
     }
 }

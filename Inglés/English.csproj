@@ -94,6 +94,7 @@
   <ItemGroup>
     <Compile Include="IMyGeneric.cs" />
     <Compile Include="MyUtils.cs" />
+    <Compile Include="PhrasalVerbs\PhrasalWord.cs" />
     <Compile Include="Word.cs" />
     <Compile Include="Vocabulary\addVoc.xaml.cs">
       <DependentUpon>addVoc.xaml</DependentUpon>

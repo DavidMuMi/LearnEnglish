@@ -25,6 +25,13 @@ namespace English
         public phrasals_intro()
         {
             this.InitializeComponent();
+            this.InitializeComponent();
+            phrasalVerbs.updateWords();
+            if (phrasalVerbs.getTotalVocabulary() == 0)
+            {
+                Study.IsEnabled = false;
+                Test.IsEnabled = false;
+            }
         }
 
         private void Study_Click(object sender, RoutedEventArgs e)

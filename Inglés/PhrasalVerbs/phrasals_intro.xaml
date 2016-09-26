@@ -7,9 +7,72 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="Study" Content="Study Phrasal Verbs" HorizontalAlignment="Left" Margin="152,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.107,-0.671" Click="Study_Click"/>
-        <Button x:Name="Test" Content="Test Pharasal Verbs" HorizontalAlignment="Left" Margin="152,292,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.107,-0.671" Click="Test_Click" />
-        <Button x:Name="Back" Content="Back" HorizontalAlignment="Left" Margin="152,400,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.107,-0.671" />
+    <Grid BorderBrush="#FF57669D">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#3498DB" Offset="0"/>
+                <GradientStop Color="#2980B9" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button x:Name="Add" Content="Add Phrasal Verb" HorizontalAlignment="Stretch"  VerticalAlignment="Center" RenderTransformOrigin="0.107,-0.671" Click="Add_Click" Height="120"  Background="#E74C3C" Foreground="#FFFAF4F4" FontFamily="Elephant" FontSize="24" PointerEntered="Study_PointerEntered" PointerExited="Study_PointerExited"  Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button x:Name="Study" Content="Study Phrasal Verb" HorizontalAlignment="Stretch"  VerticalAlignment="Center" RenderTransformOrigin="0.107,-0.671" Click="Study_Click" Height="120" Background="#E74C3C"  PointerEntered="Study_PointerEntered"  Foreground="#FFF6F0F0" FontFamily="Elephant" FontSize="24" PointerExited="Study_PointerExited"  Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="Test" Content="Test Phrasal Verb" HorizontalAlignment="Stretch"  VerticalAlignment="Center" RenderTransformOrigin="0.107,-0.671" Click="Test_Click" Height="120" Background="#E74C3C"  Foreground="#FFF9F1F1" FontFamily="Elephant" FontSize="24" PointerEntered="Study_PointerEntered" PointerExited="Study_PointerExited" Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button x:Name="Back" Content="Back" HorizontalAlignment="Stretch"  VerticalAlignment="Center" RenderTransformOrigin="0.107,-0.671" Height="120" Click="Back_Click" Background="#FFF92812"  Foreground="#FFFBFBFB" FontWeight="Medium" FontFamily="Elephant" FontSize="24" PointerEntered="Study_PointerEntered" PointerExited="Study_PointerExited" Grid.Column="1" Grid.Row="1"/>
+        </Grid>
     </Grid>
 </Page>
