@@ -7,15 +7,95 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="meaningText" HorizontalAlignment="Left" Margin="85,102,0,0" TextWrapping="Wrap" Text="Meaning" VerticalAlignment="Top" Height="35" Width="121"/>
-        <TextBox x:Name="meaningBox" HorizontalAlignment="Left" Margin="85,137,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="196"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="85,218,0,0" TextWrapping="Wrap" Text="Word" VerticalAlignment="Top"/>
-        <TextBox x:Name="wordBox" HorizontalAlignment="Left" Margin="85,277,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171"/>
-        <Button x:Name="check" Content="Check" HorizontalAlignment="Left" Margin="121,360,0,0" VerticalAlignment="Top" Click="check_Click"/>
-        <Button x:Name="next" Content="Next" HorizontalAlignment="Left" Margin="130,423,0,0" VerticalAlignment="Top" Click="next_Click"/>
-        <Button x:Name="getAnswer" Content="Get Answer" HorizontalAlignment="Left" Margin="107,493,0,0" VerticalAlignment="Top" Click="getAnswer_Click"/>
-        <TextBlock x:Name="numRemaining" HorizontalAlignment="Left" Margin="281,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+    <Grid BorderBrush="#FF57669D">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#3498DB" Offset="0"/>
+                <GradientStop Color="#2980B9" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="216"></RowDefinition>
+            <RowDefinition Height="216"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="wordBox" Grid.Column="1" HorizontalAlignment="Stretch" IsReadOnly="False" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="{ThemeResource AppBarToggleButtonCheckedBorderThemeBrush}" />
+            <TextBlock x:Name="totalWords" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+            <TextBlock x:Name="numRemaining" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="meaningBox" Grid.Column="1" HorizontalAlignment="Stretch" IsReadOnly="True" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="{ThemeResource AppBarToggleButtonCheckedBorderThemeBrush}"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="Example" Grid.Column="1" HorizontalAlignment="Stretch" IsReadOnly="True" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" SelectionHighlightColor="#FFE33737" Foreground="White"  Background="{ThemeResource AppBarToggleButtonCheckedBorderThemeBrush}"/>
 
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button x:Name="Check" Content="Check" HorizontalAlignment="Stretch"  VerticalAlignment="Top" Height="120" Click="check_Click" Background="#FFF92812"  Foreground="#FFFBFBFB" FontWeight="Medium" FontFamily="Elephant" FontSize="24" PointerEntered="Back_PointerEntered" PointerExited="Back_PointerExited" Grid.Column="1" Margin="0,48,0,0" Grid.RowSpan="3"/>
+
+        </Grid>
+
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button x:Name="Back" Content="Save results and Back" HorizontalAlignment="Stretch"  VerticalAlignment="Top" Height="120" Click="Back_Click" Background="#FFF92812"  Foreground="#FFFBFBFB" FontWeight="Medium" FontFamily="Elephant" FontSize="24" PointerEntered="Back_PointerEntered" PointerExited="Back_PointerExited" Grid.Column="2" Margin="0,48,0,0" Grid.RowSpan="3"/>
+            <Button x:Name="Next" Content="Next" HorizontalAlignment="Stretch"  VerticalAlignment="Top"  Height="120" Click="next_Click" Background="#FFF92812"  Foreground="#FFFBFBFB" FontWeight="Medium" FontFamily="Elephant" FontSize="24" PointerEntered="Back_PointerEntered" PointerExited="Back_PointerExited" Grid.Column="4" Margin="0,48,0,0" Grid.RowSpan="3" IsEnabled="False"/>
+            <Button x:Name="GetAnswer" Content="Get Answer" HorizontalAlignment="Stretch"  VerticalAlignment="Top" Height="120" Click="getAnswer_Click" Background="#FFF92812"  Foreground="#FFFBFBFB" FontWeight="Medium" FontFamily="Elephant" FontSize="24" PointerEntered="Back_PointerEntered" PointerExited="Back_PointerExited" Grid.Column="0" Margin="0,48,0,0" Grid.RowSpan="3" />
+        </Grid>
     </Grid>
 </Page>

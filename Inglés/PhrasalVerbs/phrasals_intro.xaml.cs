@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Inglés.PhrasalVerbs;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,7 +27,6 @@ namespace English
         public phrasals_intro()
         {
             this.InitializeComponent();
-            this.InitializeComponent();
             phrasalVerbs.updateWords();
             if (phrasalVerbs.getTotalVocabulary() == 0)
             {
@@ -45,5 +46,27 @@ namespace English
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(testPhrasals), null);
         }
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(addPhrasal), null);
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(MainPage), null);
+        }
+
+        private void Study_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+        }
+
+        private void Study_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 231, 76, 60));
+        }
     }
 }
+

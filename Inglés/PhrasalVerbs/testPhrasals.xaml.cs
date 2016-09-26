@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Inglés.PhrasalVerbs;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,71 +25,125 @@ namespace English
     /// </summary>
     public sealed partial class testPhrasals : Page
     {
-        phrasalVerbs voc;
         int total;
-        int act;
-        List<int> nums;
+        int act = 0;
+        int exitos = 0;
+        PhrasalWord word;
         public testPhrasals()
         {
 
             this.InitializeComponent();
-           
-            voc = new phrasalVerbs();
-            nums = new List<int>();
-            total = voc.getTotalPhrasalVerbs();
-            Random rnd = new Random();
-                     
-
-            for (int i = 0; i < voc.getTotalPhrasalVerbs(); i++)
-            {
-                nums.Add(-1);
-            }
-
-            for (int i = 0; i < voc.getTotalPhrasalVerbs(); i++)
-            {
-                inicio:
-                int month = rnd.Next(0, total);
-                if (nums.Contains(month))
-                {
-                    goto inicio;
-                }
-                else
-                {
-                    nums[i] = month;
-                }
-            }
-
-            act = 0;
-            meaningBox.Text = voc.getOneMeaning( nums[act]);
-            numRemaining.Text = total.ToString();
+            total = phrasalVerbs.getTotalVocabulary();
+            word = phrasalVerbs.getWord(act);
+            meaningBox.Text = word.meaning;
+            totalWords.Text = total.ToString() + " Words to test";
+            numRemaining.Text = "Success";
         }
 
         private void check_Click(object sender, RoutedEventArgs e)
         {
 
-            if (voc.compareResult(nums[act], wordBox.Text.ToString()))
+            if (word.word == wordBox.Text.ToString())
             {
                 wordBox.Background = new SolidColorBrush(Colors.Green);
+                meaningBox.Background = new SolidColorBrush(Colors.Green);
+                Example.Background = new SolidColorBrush(Colors.Green);
+                phrasalVerbs.WordList[act].updateSuccess(true);
+                Example.Text = phrasalVerbs.getOneExample(act);
+                exitos++;
+                Check.IsEnabled = false;
+                GetAnswer.IsEnabled = false;
             }
             else
+            {
                 wordBox.Background = new SolidColorBrush(Colors.Red);
+                meaningBox.Background = new SolidColorBrush(Colors.Red);
+                Example.Background = new SolidColorBrush(Colors.Red);
+                phrasalVerbs.WordList[act].updateSuccess(false);
+            }
+            Next.IsEnabled = true;
         }
 
         private void next_Click(object sender, RoutedEventArgs e)
         {
+            total -= 1;
             act++;
+            if (act >= phrasalVerbs.getTotalVocabulary())
+            {
+                Next.IsEnabled = false;
+                meaningBox.Background = new SolidColorBrush(Colors.White);
+                Example.Background = new SolidColorBrush(Colors.White);
+                wordBox.Background = new SolidColorBrush(Colors.White);
+                GetAnswer.IsEnabled = false;
+                Check.IsEnabled = false;
+                numRemaining.Text = exitos + " Successes out of " + act;
+                totalWords.Text = total.ToString() + " Words remaining";
+                return;
+            }
+            if (total == 0)
+            {
+                meaningBox.Text = "";
+                Example.Text = "";
+                meaningBox.Text = "";
+                Next.IsEnabled = false;
+                Check.IsEnabled = false;
+                GetAnswer.IsEnabled = false;
+                return;
+            }
+            word = phrasalVerbs.getWord(act);
+            Check.IsEnabled = true;
+            meaningBox.Text = word.meaning;
+            Example.Text = "";
 
-            numRemaining.Text = (--total).ToString();
-            if (act >= voc.getTotalPhrasalVerbs())
-                act = 0;
-            meaningBox.Text = voc.getOneMeaning(nums[act]);
+            numRemaining.Text = exitos + " Successes out of " + act;
+            totalWords.Text = total.ToString() + " Words remaining";
             wordBox.Background = new SolidColorBrush(Colors.White);
             wordBox.Text = "";
+            Next.IsEnabled = false;
+            meaningBox.Background = new SolidColorBrush(Colors.White);
+            Example.Background = new SolidColorBrush(Colors.White);
+            wordBox.Background = new SolidColorBrush(Colors.White);
         }
 
         private void getAnswer_Click(object sender, RoutedEventArgs e)
         {
-            wordBox.Text = voc.GetResponse(nums[act]);
+            wordBox.Text = word.word;
+            Example.Text = word.example;
+            phrasalVerbs.WordList[act].updateSuccess(false);
+            Check.IsEnabled = false;
+            Next.IsEnabled = true;
+        }
+
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            saveData();
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(phrasals_intro), null);
+        }
+
+        private async void saveData()
+        {
+            Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Windows.Storage.StorageFile sampleFile = await storageFolder.CreateFileAsync("phr.json", Windows.Storage.CreationCollisionOption.OpenIfExists);
+            string data = JsonConvert.SerializeObject(phrasalVerbs.WordList);
+            await Windows.Storage.FileIO.WriteTextAsync(sampleFile, data);
+        }
+
+        private void Back_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 44, 62, 80));
+        }
+
+        private void Back_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 249, 40, 18));
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            phrasalVerbs.SaveJson("phr.json");
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(phrasals_intro), null);
         }
     }
 

@@ -94,6 +94,9 @@
   <ItemGroup>
     <Compile Include="IMyGeneric.cs" />
     <Compile Include="MyUtils.cs" />
+    <Compile Include="PhrasalVerbs\addPhrasal.xaml.cs">
+      <DependentUpon>addPhrasal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PhrasalVerbs\PhrasalWord.cs" />
     <Compile Include="Word.cs" />
     <Compile Include="Vocabulary\addVoc.xaml.cs">
@@ -159,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="PhrasalVerbs\addPhrasal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Vocabulary\addVoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

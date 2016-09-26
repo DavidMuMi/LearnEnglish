@@ -1,4 +1,4 @@
-﻿using Inglés.PhrasalVerbs;
+﻿using English;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,47 +17,26 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace English
+namespace Inglés.PhrasalVerbs
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class studyPhrasals : Page
+    public sealed partial class addPhrasal : Page
     {
-        int pos;
-        int totalVoc;
-        PhrasalWord word;
-        public studyPhrasals()
+        public addPhrasal()
         {
             this.InitializeComponent();
-            totalVoc = phrasalVerbs.getTotalVocabulary();
-            pos = 0;
-            word = phrasalVerbs.getWord(0);
-            actBoxes();
         }
 
-        private void next_Click(object sender, RoutedEventArgs e)
-        {
-            pos++;
-            if (pos >= totalVoc)
-                pos = 0;
-            word = phrasalVerbs.getWord(pos);
-            actBoxes();
-        }
-
-        private void actBoxes()
-        {
-            Word.Text = word.word;
-            Meaning.Text = word.meaning;
-            Example.Text = word.example;
-        }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-
+            PhrasalWord word = new PhrasalWord(Word.Text, Definition.Text, Example.Text);
+            phrasalVerbs.WordList.Add(word);
+            phrasalVerbs.SaveJson("phr.json");
             Frame rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(phrasals_intro), null);
+            rootFrame.Navigate(typeof(vocabulary_intro), null);
         }
-
 
         private void Back_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
@@ -67,6 +46,28 @@ namespace English
         private void Back_PointerExited(object sender, PointerRoutedEventArgs e)
         {
             ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 249, 40, 18));
+        }
+
+        private void Example_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (((TextBox)sender).Text == "Example to add" || ((TextBox)sender).Text == "Phrasal to add" || ((TextBox)sender).Text == "Definition to add")
+            {
+                ((TextBox)sender).Text = "";
+            }
+
+        }
+
+        private void Next_Click(object sender, RoutedEventArgs e)
+        {
+            PhrasalWord word = new PhrasalWord(Word.Text, Definition.Text, Example.Text);
+            if (Word.Text == "" || Definition.Text == "")
+            {
+                return;
+            }
+            phrasalVerbs.WordList.Add(word);
+            Word.Text = "";
+            Example.Text = "";
+            Definition.Text = "";
         }
     }
 }
