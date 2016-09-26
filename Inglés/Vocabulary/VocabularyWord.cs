@@ -24,7 +24,7 @@ namespace English
         }
         public bool Equals(VocabularyWord other)
         {
-            if (other.word==this.word)
+            if (this.word==other.word && this.example==other.example && this.meaning==other.meaning)
             {
                 return true;
             }

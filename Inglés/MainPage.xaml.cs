@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
@@ -49,7 +50,7 @@ namespace English
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Window.Current.Close();
+            CoreApplication.Exit();
         }
 
         private void vocabulary_PointerEntered(object sender, PointerRoutedEventArgs e)

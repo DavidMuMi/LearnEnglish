@@ -130,6 +130,7 @@ namespace English
             {
                 Vocabulay.WordList = new List<VocabularyWord>();
             }
+            updateWords();
         }
 
         async public static void SaveJson(string name)

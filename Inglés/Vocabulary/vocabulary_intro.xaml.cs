@@ -28,6 +28,12 @@ namespace English
         {
             this.InitializeComponent();
             Vocabulay.updateWords();
+            if (Vocabulay.getTotalVocabulary() == 0)
+            {
+                Study.IsEnabled = false;
+                Test.IsEnabled = false;
+            }
+
         }
        
 

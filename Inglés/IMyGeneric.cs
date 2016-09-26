@@ -8,6 +8,6 @@ namespace Inglés
 {
     class IMyGeneric
     {
-        public List<Word> wordList;
+        
     }
 }

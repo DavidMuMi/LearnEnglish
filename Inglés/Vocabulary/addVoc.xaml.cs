@@ -62,7 +62,14 @@ namespace English
         private void Next_Click(object sender, RoutedEventArgs e)
         {
             VocabularyWord word = new VocabularyWord(Word.Text, Definition.Text, Example.Text);
+            if (Word.Text=="" || Definition.Text=="")
+            {
+                return;
+            }
             Vocabulay.WordList.Add(word);
+            Word.Text = "";
+            Example.Text = "";
+            Definition.Text = "";
         }
     }
 }

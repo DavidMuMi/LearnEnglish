@@ -27,6 +27,7 @@ namespace English
         
         int total;
         int act = 0;
+        int exitos=0;
         VocabularyWord word;
         public testVocabulary()
         {            
@@ -34,7 +35,8 @@ namespace English
             total = Vocabulay.getTotalVocabulary();
             word = Vocabulay.getWord(act);
             meaningBox.Text = word.meaning;
-            numRemaining.Text = total.ToString();
+            totalWords.Text = total.ToString() + " Words to test";
+            numRemaining.Text = "Success";
         }
 
         private void check_Click(object sender, RoutedEventArgs e)
@@ -43,12 +45,19 @@ namespace English
             if (word.word==wordBox.Text.ToString())
             {
                 wordBox.Background = new SolidColorBrush(Colors.Green);
+                meaningBox.Background = new SolidColorBrush(Colors.Green);
+                Example.Background = new SolidColorBrush(Colors.Green);
                 Vocabulay.WordList[act].updateSuccess(true);
                 Example.Text = Vocabulay.getOneExample(act);
+                exitos++;
+                Check.IsEnabled = false;
+                GetAnswer.IsEnabled = false;
             }
             else
             {
                 wordBox.Background = new SolidColorBrush(Colors.Red);
+                meaningBox.Background = new SolidColorBrush(Colors.Red);
+                Example.Background = new SolidColorBrush(Colors.Red);
                 Vocabulay.WordList[act].updateSuccess(false);
             }
             Next.IsEnabled = true;
@@ -56,17 +65,43 @@ namespace English
 
         private void next_Click(object sender, RoutedEventArgs e)
         {
+            total -= 1;
             act++;
             if (act >= Vocabulay.getTotalVocabulary())
-                act = 0;
+            {
+                Next.IsEnabled = false;
+                meaningBox.Background = new SolidColorBrush(Colors.White);
+                Example.Background = new SolidColorBrush(Colors.White);
+                wordBox.Background = new SolidColorBrush(Colors.White);
+                GetAnswer.IsEnabled = false;
+                Check.IsEnabled = false;
+                numRemaining.Text = exitos + " Successes out of " + act;
+                totalWords.Text = total.ToString() + " Words remaining";
+                return;
+            }
+            if (total == 0)
+            {
+                meaningBox.Text = "";
+                Example.Text = "";
+                meaningBox.Text = "";
+                Next.IsEnabled = false;
+                Check.IsEnabled = false;
+                GetAnswer.IsEnabled = false;
+                return;
+            }
             word = Vocabulay.getWord(act);
             Check.IsEnabled = true;
             meaningBox.Text = word.meaning;
             Example.Text = "";
-            numRemaining.Text = (--total).ToString();
+            
+            numRemaining.Text = exitos+" Successes out of " +act;
+            totalWords.Text = total.ToString() + " Words remaining";
             wordBox.Background = new SolidColorBrush(Colors.White);
             wordBox.Text = "";
             Next.IsEnabled = false;
+            meaningBox.Background = new SolidColorBrush(Colors.White);
+            Example.Background = new SolidColorBrush(Colors.White);
+            wordBox.Background = new SolidColorBrush(Colors.White);
         }
 
         private void getAnswer_Click(object sender, RoutedEventArgs e)
