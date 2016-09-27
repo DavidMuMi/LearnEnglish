@@ -93,6 +93,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMyGeneric.cs" />
+    <Compile Include="IrregularVerbs\addVerbs.xaml.cs">
+      <DependentUpon>addVerbs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IrregularVerbs\IrregularWord.cs" />
     <Compile Include="MyUtils.cs" />
     <Compile Include="PhrasalVerbs\addPhrasal.xaml.cs">
       <DependentUpon>addPhrasal.xaml</DependentUpon>
@@ -162,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="IrregularVerbs\addVerbs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PhrasalVerbs\addPhrasal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

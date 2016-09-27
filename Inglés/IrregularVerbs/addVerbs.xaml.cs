@@ -1,4 +1,4 @@
-﻿using Inglés.IrregularVerbs;
+﻿using English;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,49 +17,26 @@ using Windows.UI.Xaml.Navigation;
 
 // La plantilla de elemento Página en blanco está documentada en http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace English
+namespace Inglés.IrregularVerbs
 {
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class studyVerbs : Page
+    public sealed partial class addVerbs : Page
     {
-        int pos;
-        int totalVoc;
-        IrregularWord word;
-        public studyVerbs()
+        public addVerbs()
         {
             this.InitializeComponent();
-            totalVoc = irregularVerbs.getTotalVocabulary();
-            pos = 0;
-            word = irregularVerbs.getWord(0);
-            actBoxes();
         }
 
-
-        private void next_Click(object sender, RoutedEventArgs e)
-        {
-            pos++;
-            if (pos >= totalVoc)
-                pos = 0;
-            word = irregularVerbs.getWord(pos);
-            actBoxes();
-        }
-
-        private void actBoxes()
-        {
-            infinitive.Text = word.infinitive;
-            simple.Text = word.psimple;
-            participle.Text = word.pparticiple;
-            Meaning.Text = word.meaning;
-        }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-
+            IrregularWord word = new IrregularWord(Word.Text, Definition.Text, Example.Text);
+            irregularVerbs.WordList.Add(word);
+            irregularVerbs.SaveJson("irr.json");
             Frame rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(irregular_intro), null);
+            rootFrame.Navigate(typeof(vocabulary_intro), null);
         }
-
 
         private void Back_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
@@ -69,6 +46,28 @@ namespace English
         private void Back_PointerExited(object sender, PointerRoutedEventArgs e)
         {
             ((Button)sender).Background = new SolidColorBrush(Color.FromArgb(255, 249, 40, 18));
+        }
+
+        private void Example_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (((TextBox)sender).Text == "Example to add" || ((TextBox)sender).Text == "Word to add" || ((TextBox)sender).Text == "Definition to add")
+            {
+                ((TextBox)sender).Text = "";
+            }
+
+        }
+
+        private void Next_Click(object sender, RoutedEventArgs e)
+        {
+            IrregularWord word = new IrregularWord(Word.Text, Definition.Text, Example.Text);
+            if (Word.Text == "" || Definition.Text == "")
+            {
+                return;
+            }
+            irregularVerbs.WordList.Add(word);
+            Word.Text = "";
+            Example.Text = "";
+            Definition.Text = "";
         }
     }
 }
